@@ -1,3 +1,3 @@
-# Otus Homework
+# Otus Homework Python basic
 
 Посохов Александр
