@@ -20,6 +20,14 @@ EVEN = "even"
 PRIME = "prime"
 
 
+def filter_even(x):
+    return not x % 2
+
+
+def filter_odd(x):
+    return x % 2
+
+
 def filter_numbers(number_list, filter_type):
     """
     функция, которая на вход принимает список из целых чисел,
@@ -30,11 +38,9 @@ def filter_numbers(number_list, filter_type):
     <<< [1, 3]
     >>> filter_numbers([2, 3, 4, 5], EVEN)
     <<< [2, 4]
+
     """
     if filter_type == ODD:
-        return [number for number in number_list if number % 2 != 0]
+        return list(filter(filter_odd, number_list))
     if filter_type == EVEN:
-        return [number for number in number_list if number % 2 == 0]
-
-
-
+        return list(filter(filter_even, number_list))
