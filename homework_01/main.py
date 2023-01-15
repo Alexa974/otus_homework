@@ -20,14 +20,39 @@ EVEN = "even"
 PRIME = "prime"
 
 
-def filter_numbers():
+def filter_even(x):
+    return not x % 2
+
+
+def filter_odd(x):
+    return x % 2
+
+
+def filter_prime(x):
+    if x == 1:
+        return False
+    d = 2
+    while x % d != 0:
+        d += 1
+    return d == x
+
+
+def filter_numbers(number_list, filter_type):
     """
     функция, которая на вход принимает список из целых чисел,
     и возвращает только чётные/нечётные/простые числа
     (выбор производится передачей дополнительного аргумента)
 
-    >>> filter_numbers([1, 2, 3], ODD)
+   >>> filter_numbers([1, 2, 3], ODD)
     <<< [1, 3]
     >>> filter_numbers([2, 3, 4, 5], EVEN)
     <<< [2, 4]
+
     """
+    if filter_type == ODD:
+        return list(filter(filter_odd, number_list))
+    if filter_type == EVEN:
+        return list(filter(filter_even, number_list))
+    if filter_type == PRIME:
+        return list(filter(filter_prime, number_list))
+
