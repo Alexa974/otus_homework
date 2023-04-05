@@ -18,12 +18,14 @@ async def fetch_json(session: ClientSession, url: str) -> dict:
 async def fetch_users_data():
     async with ClientSession() as session:
         user_data = await fetch_json(session, USERS_DATA_URL)
+        # print(user_data)
     return user_data
 
 
 async def fetch_posts_data():
     async with ClientSession() as session:
         post_data = await fetch_json(session, POSTS_DATA_URL)
+        # print(post_data)
     return post_data
 
 
@@ -33,5 +35,5 @@ async def main():
 
 
 if __name__ == "__main__":
-    loop = asyncio.get_event_loop()
-    loop.run_until_complete(main())
+    asyncio.run(main())
+
