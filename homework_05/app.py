@@ -18,13 +18,19 @@ app = flask.Flask(__name__)
 
 @app.route("/")
 def index():
-    return "It's Index pages"
+    # return "It's Index pages"
+    return flask.render_template('index.html')
 
 
 @app.route("/about/")
 def about():
-    return "It's about pages"
-
+    # return "Flask is a web framework that offers tools, libraries, " \
+    #         "and technologies suitable for building a web application. " \
+    #         "This web application can come in the form of web pages, " \
+    #         "blogs, or even an extensive web-based calendar app or " \
+    #         "a commercial site. Flask is one of the best micro-frameworks, " \
+    #         "as it has little to no dependencies on external libraries."
+    return flask.render_template('about.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
