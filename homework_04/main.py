@@ -13,6 +13,44 @@
 - закрытие соединения с БД
 """
 
+import asyncio
+from typing import List
+
+from sqlalchemy.ext.asyncio import AsyncSession
+
+from homework_04.jsonplaceholder_requests import fetch_users_data, fetch_posts_data
+from homework_04.models import User, Post, Base, engine, async_session
+
+
+async def create_tables():
+    async with engine.begin() as conn:
+        await conn.run_sync(Base.metadata.drop_all)
+        await conn.run_sync(Base.metadata.create_all)
+
+
+async def create_users(users_data):
+    users_list = []
+    for user in users_data:
+        users_list.append(User(id=user['id'],
+                               name=user['name'],
+                               username=user['username'],
+                               email=user['email']))
+    async with async_session() as session:  # type: AsyncSession
+        async with session.begin():
+            session.add_all(users_list)
+
+
+async def create_posts(posts_data):
+    posts_list = []
+    for post in posts_data:
+        posts_list.append(Post(id=post['id'],
+                               title=post['title'],
+                               user_id=post['userId'],
+                               body=post['body']))
+    async with async_session() as session:  # type: AsyncSession
+        async with session.begin():
+            session.add_all(posts_list)
+
 
 async def async_main():
     pass
