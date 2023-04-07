@@ -13,6 +13,7 @@
 
 import flask
 
+
 app = flask.Flask(__name__)
 
 
@@ -31,6 +32,7 @@ def about():
     #         "a commercial site. Flask is one of the best micro-frameworks, " \
     #         "as it has little to no dependencies on external libraries."
     return flask.render_template('about.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
