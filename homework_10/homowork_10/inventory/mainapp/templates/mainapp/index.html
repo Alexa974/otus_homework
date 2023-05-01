@@ -1,0 +1,18 @@
+{% extends "base.html"%}
+
+{% block content %}
+     <div style="text-align: center;">
+         <h1>Домашнняяя страница</h1>
+     </div>
+    <body>
+        <ol>
+            {% for card in cards %}
+                <li>
+                   {{card.title}}
+                    <ul>
+                        {{card.device_type}} |  {{card.user_last_name}} | {{card.department_name}} | {{card.plant_name}} | {{card.status_name}} | {{card.admin_last_name}}
+                    </ul>
+            {% endfor %}
+        </ol>
+    </body>
+{% endblock %}
